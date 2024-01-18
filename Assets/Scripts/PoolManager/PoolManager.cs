@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
+
 
 public class PoolManager : MonoBehaviour
 {
@@ -11,11 +13,12 @@ public class PoolManager : MonoBehaviour
     void Start()
     {
         createdObjects = new List<GameObject>();
-        StartCoroutine(RoutineSpawn());
+        StartFunction();
     }
 
-    private void Update()
+    public virtual void StartFunction()
     {
+        
     }
 
     public GameObject CreateObject(Vector3 startPos)
@@ -40,15 +43,8 @@ public class PoolManager : MonoBehaviour
         return CreateObject(defaultPos);
     }
 
-    IEnumerator RoutineSpawn()
+    public void DisableAllObjects()
     {
-        while (true)
-        {
-            Debug.Log("Comienza la rutina");
-            yield return new WaitForSeconds(3);
-            Debug.Log("Termino la rutina");
-            // Continuar con este punto del codigo
-            AskForObject(Vector3.forward * 5f);    
-        }
+        
     }
 }

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamagable, IMove
 {
     public Transform personaje;
 
@@ -21,12 +21,19 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         transform.LookAt(personaje);
+        health = 10;
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public int health { get; set; }
+    public void Damage(int damageCount)
     {
-        transform.Translate(Vector3.forward * Time.deltaTime);
-        
+        health -= damageCount;
+        if (health<=0)
+            gameObject.SetActive(false);
+    }
+
+    public void Move()
+    {
     }
 }

@@ -32,6 +32,5 @@ public class Player : MonoBehaviour
 
         Bullet balita = new Bullet();
         balita.speed = 10;
-        Debug.Log(balita.speed);
     }
 }
